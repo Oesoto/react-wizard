@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-// import { Welcome, VehicleChoose, CarForm, BoatForm, BoatDetail, Confirm } from './Steps.js';
-import { Welcome, VehicleChoose } from './Steps.js';
-import { steps } from './steps_wizard.js';
-import { StateMachine } from './StateMachine.js';
+import { WelcomePage } from '../welcome_page';
+import { VehicleChoosePage } from '../vehicle_choose_page';
+
+// import { steps } from './constants';
+import { StateMachine } from '../../utilities/StateMachine.js';
 
 //Connect es la función que me permite conectar el componente a la parte del store que le interesa al componente
 import { connect } from 'react-redux';
-import * as wizardActions from './actions/actions-wizard';
+import * as wizardActions from '../../actions/actions-wizard';
 
 class Wizard extends Component {
     constructor(props) {
@@ -82,8 +83,8 @@ class Wizard extends Component {
     render() {
         return (
             <div>
-                <Welcome currentStep={this.props.currentStep} next={this.props.onGoNextStep} />
-                <VehicleChoose currentStep={this.props.currentStep} back={this.props.onGoPrevStep} next={this.props.onGoNextStep} />
+                <WelcomePage currentStep={this.props.currentStep} next={this.props.onGoNextStep} />{' '}
+                <VehicleChoosePage currentStep={this.props.currentStep} back={this.props.onGoPrevStep} next={this.props.onGoNextStep} />
             </div>
         );
     }
@@ -107,23 +108,6 @@ const mapDispatchToProps = dispatch => {
         onGoPrevStep: desiredPrevStep => dispatch(wizardActions.goPrevStep(desiredPrevStep))
     };
 };
-
-//Se necesitan despachar acciones dentro del componente
-//Declaro que tipo de acciones quiero despachar en este contenedor
-//Recibe como parámetro 'dispatch'
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         //Llamo la función dispatch que me da React-Redux
-//         //La función de dispatch queda mapeada como un prop que luego puedo usar en un handler de algún componente para despachar una acción hacia el reducer
-//         onIncrementCounter: () => dispatch(actionCreators.increment()),
-//         onDecrementCounter: () => dispatch(actionCreators.decrement()),
-//         //Adicional a type puedo enviar un payload. Datos adicionales para procesar en el reducer
-//         onAddCounter: () => dispatch(actionCreators.add(5)),
-//         onSubtractCounter: () => dispatch(actionCreators.subtract(5)),
-//         onStoreResult: result => dispatch(actionCreators.storeResult(result)),
-//         onDeleteResult: resultID => dispatch(actionCreators.deleteResult(resultID))
-//     };
-// };
 
 //connect da acceso al componente a la parte del estado definida en mapStateToProps
 export default connect(

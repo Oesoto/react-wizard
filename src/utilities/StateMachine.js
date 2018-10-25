@@ -1,4 +1,4 @@
-import { steps } from './steps_wizard';
+import { steps } from '../constants/steps_wizard';
 
 /*
  * This class simply helps us coordinate the transitions

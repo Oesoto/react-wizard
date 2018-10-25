@@ -1,21 +1,5 @@
 import React, { Component } from 'react';
-import { steps } from './steps_wizard.js';
-
-//--Paso 1 - Welcome
-export const Welcome = props => {
-    if (props.currentStep == steps.WELCOME) {
-        return (
-            <div>
-                <p>Welcome to Acme Insurance! Lets get started</p>
-                <button type="button" onClick={() => props.next(steps.VEHICLE_CHOOSE)}>
-                    Next
-                </button>
-            </div>
-        );
-    } else {
-        return null;
-    }
-};
+import { steps } from './constants/steps_wizard.js';
 
 //--Paso 2 - Seleccionar vehiculo
 export class VehicleChoose extends Component {

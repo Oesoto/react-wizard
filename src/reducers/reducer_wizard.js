@@ -1,7 +1,7 @@
 //Importar el objeto con tipos de acciones para usar en el switch
-import { actionTypes } from '../actions/action-types';
-import { steps } from '../steps_wizard';
-import { StateMachine } from '../StateMachine';
+import { actionTypes } from '../constants/action_types';
+import { steps } from '../constants';
+import { StateMachine } from '../utilities/StateMachine';
 
 //Un reducer es una función
 //Toma como parametros un estado y una acción
@@ -11,7 +11,7 @@ const initialState = {
     currentStep: steps.WELCOME //El wizard comienza en el estado WELCOME
 };
 
-const wizardReducer = (state = initialState, action) => {
+export const wizardReducer = (state = initialState, action) => {
     //Del estado obtengo el paso actual y del payload del action traigo el paso que deseo
     let { currentStep } = state;
     let { desiredStep } = action;
@@ -36,5 +36,3 @@ const wizardReducer = (state = initialState, action) => {
             return state;
     }
 };
-
-export default wizardReducer;

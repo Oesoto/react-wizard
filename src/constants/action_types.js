@@ -2,5 +2,6 @@
 //mejorar su escalabilidad y evitar typos
 export const actionTypes = {
     GO_NEXTSTEP: 'GO_NEXTSTEP',
-    GO_PREVSTEP: 'GO_PREVSTEP'
+    GO_PREVSTEP: 'GO_PREVSTEP',
+    SAVE_COLLECTED_DATA: 'SAVE_COLLECTED_DATA'
 };

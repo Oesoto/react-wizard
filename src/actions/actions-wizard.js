@@ -18,10 +18,18 @@ export const goPrevStep = desiredPrevStep => {
     };
 };
 
-//Action creator para guardar data recolectada de botones o forms
-export const saveCollectedData = data => {
+//Action creator para guardar nombre de la entidad
+export const saveRateData = (propertyName, propertyValue) => {
     return {
-        type: actionTypes.SAVE_COLLECTED_DATA,
-        data
+        type: actionTypes.SAVE_RATE_DATA,
+        payload: { propertyName, propertyValue }
     };
 };
+
+//Action creator para guardar el año de tarifario seleccionado
+// export const saveYearForRate = yearForRate => {
+//     return {
+//         type: actionTypes.SAVE_RATE_YEAR,
+//         yearForRate
+//     };
+// };

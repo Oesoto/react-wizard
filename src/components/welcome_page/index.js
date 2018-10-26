@@ -21,10 +21,8 @@ export class WelcomePage extends Component {
     };
 
     dispatchSaveAction = () => {
-        console.log(this.props);
-
-        // this.props.onSaveData(this.state.currentEntity);
-        // this.props.next(steps.VEHICLE_CHOOSE);
+        this.props.onSaveRateData('selectedEntity', this.state.currentEntity);
+        this.props.next(steps.VEHICLE_CHOOSE);
     };
 
     render() {
@@ -58,7 +56,7 @@ export class WelcomePage extends Component {
 //Recibe como parámetro el state almacenado en Redux
 // const mapStateToProps = state => {
 //     return {
-//         currentStep: state.wizard.currentStep
+//         selectedEntity: state.wizard.collectedData.selectedEntity
 //     };
 // };
 
@@ -67,7 +65,7 @@ export class WelcomePage extends Component {
 //Recibe como parámetro 'dispatch'
 const mapDispatchToProps = dispatch => {
     return {
-        onSaveData: data => dispatch(wizardActions.saveCollectedData(data))
+        onSaveRateData: (propertyName, propertyValue) => dispatch(wizardActions.saveRateData(propertyName, propertyValue))
     };
 };
 

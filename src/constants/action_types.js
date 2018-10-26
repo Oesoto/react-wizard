@@ -3,5 +3,7 @@
 export const actionTypes = {
     GO_NEXTSTEP: 'GO_NEXTSTEP',
     GO_PREVSTEP: 'GO_PREVSTEP',
-    SAVE_COLLECTED_DATA: 'SAVE_COLLECTED_DATA'
+    //Acciones para recolección de datos de Wizard tarifario
+    SAVE_RATE_DATA: 'SAVE_RATE_DATA'
+    // SAVE_RATE_YEAR: 'SAVE_RATE_YEAR'
 };

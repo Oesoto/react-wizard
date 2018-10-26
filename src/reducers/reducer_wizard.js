@@ -8,7 +8,12 @@ import { StateMachine } from '../utilities/StateMachine';
 
 //Se define un estado inicial para el reducer
 const initialState = {
-    currentStep: steps.WELCOME //El wizard comienza en el estado WELCOME
+    currentStep: steps.WELCOME, //El wizard comienza en el estado WELCOME
+    //En este objeto se guardaran todos los datos almacenados en el wizard
+    collectedData: {
+        selectedEntity: '',
+        rateForYear: ''
+    }
 };
 
 export const wizardReducer = (state = initialState, action) => {
@@ -17,6 +22,7 @@ export const wizardReducer = (state = initialState, action) => {
     let { desiredStep } = action;
     let stateMachine = new StateMachine();
     switch (action.type) {
+        //Ir al siguiente paso del Wizard
         case actionTypes.GO_NEXTSTEP:
             //Con la máquina de estados verifico que el estado deseado sea válido
             let nextStep = stateMachine.transitionTo(currentStep, desiredStep);
@@ -25,13 +31,36 @@ export const wizardReducer = (state = initialState, action) => {
                 ...state,
                 currentStep: nextStep
             };
+        //Ir al paso anterior en el wizard
         case actionTypes.GO_PREVSTEP:
             let prevStep = stateMachine.transitionFrom(currentStep, desiredStep);
             return {
                 ...state,
                 currentStep: prevStep
             };
+        //Guardar la entidad seleccionada en el objeto collectedData
+        case actionTypes.SAVE_RATE_DATA:
+            return {
+                //Propagación de estado y de collected data para no perder
+                //los datos ya almacenados y agregar lo nuevo que ingresó
+                ...state,
+                collectedData: {
+                    ...state.collectedData,
+                    [action.payload.propertyName]: action.payload.propertyValue
+                }
+            };
 
+        //Guardar el año seleccionado en el objeto collectedData
+        // case actionTypes.SAVE_RATE_YEAR:
+        //     return {
+        //         //Propagación de estado y de collected data para no perder
+        //         //los datos ya almacenados y agregar lo nuevo que ingresó
+        //         ...state,
+        //         collectedData: {
+        //             ...state.collectedData,
+        //             selectedEntity: action.entityName
+        //         }
+        //     };
         default:
             return state;
     }

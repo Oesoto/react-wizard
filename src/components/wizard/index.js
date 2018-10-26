@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { WelcomePage } from '../welcome_page';
+import WelcomePage from '../welcome_page';
 import { VehicleChoosePage } from '../vehicle_choose_page';
 
 // import { steps } from './constants';

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import WelcomePage from '../welcome_page';
-import { VehicleChoosePage } from '../vehicle_choose_page';
+import YearChoosePage from '../year_choose_page';
+import CategoryChoosePage from '../category_choose_page';
 
 // import { steps } from './constants';
 import { StateMachine } from '../../utilities/StateMachine.js';
@@ -83,8 +84,22 @@ class Wizard extends Component {
     render() {
         return (
             <div>
-                <WelcomePage currentStep={this.props.currentStep} next={this.props.onGoNextStep} />{' '}
-                <VehicleChoosePage currentStep={this.props.currentStep} back={this.props.onGoPrevStep} next={this.props.onGoNextStep} />
+                {/* {Welcome - Componente} */}
+                <WelcomePage currentStep={this.props.currentStep} next={this.props.onGoNextStep} onSaveRateData={this.props.onSaveRateData} />
+                {/* Elegir año - Componente */}
+                <YearChoosePage
+                    currentStep={this.props.currentStep}
+                    back={this.props.onGoPrevStep}
+                    next={this.props.onGoNextStep}
+                    onSaveRateData={this.props.onSaveRateData}
+                />
+                {/* Elegir categoría - Componente */}
+                <CategoryChoosePage
+                    currentStep={this.props.currentStep}
+                    back={this.props.onGoPrevStep}
+                    next={this.props.onGoNextStep}
+                    onSaveRateData={this.props.onSaveRateData}
+                />
             </div>
         );
     }
@@ -104,8 +119,12 @@ const mapStateToProps = state => {
 //Recibe como parámetro 'dispatch'
 const mapDispatchToProps = dispatch => {
     return {
+        //Acción ir a paso siguiente
         onGoNextStep: desiredNextStep => dispatch(wizardActions.goNextStep(desiredNextStep)),
-        onGoPrevStep: desiredPrevStep => dispatch(wizardActions.goPrevStep(desiredPrevStep))
+        //Acción ir al paso anterior
+        onGoPrevStep: desiredPrevStep => dispatch(wizardActions.goPrevStep(desiredPrevStep)),
+        //Acción guardar datos de la tarifa
+        onSaveRateData: (propertyName, propertyValue) => dispatch(wizardActions.saveRateData(propertyName, propertyValue))
     };
 };
 

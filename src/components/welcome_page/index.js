@@ -4,7 +4,7 @@ import { steps } from '../../constants/steps_wizard';
 
 import * as wizardActions from '../../actions/actions-wizard';
 
-export class WelcomePage extends Component {
+export default class WelcomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,6 +13,7 @@ export class WelcomePage extends Component {
         };
     }
 
+    //Handler para los botones de selección de entidad
     registerEntity = e => {
         this.setState({
             currentEntity: e.target.value,
@@ -20,9 +21,12 @@ export class WelcomePage extends Component {
         });
     };
 
+    /*Handler del botón continuar
+    Guardará los datos y despachará la acción para ir
+    al siguiente paso */
     dispatchSaveAction = () => {
         this.props.onSaveRateData('selectedEntity', this.state.currentEntity);
-        this.props.next(steps.VEHICLE_CHOOSE);
+        this.props.next(steps.YEAR_CHOOSE);
     };
 
     render() {
@@ -50,27 +54,3 @@ export class WelcomePage extends Component {
         }
     }
 }
-
-//Declaro en una función la parte del estado que me interesa conocer
-//Hago un mapeo de ese estado a props dando el nombre del prop y la parte del estado
-//Recibe como parámetro el state almacenado en Redux
-// const mapStateToProps = state => {
-//     return {
-//         selectedEntity: state.wizard.collectedData.selectedEntity
-//     };
-// };
-
-//Se necesitan despachar acciones dentro del componente
-//Declaro que tipo de acciones quiero despachar en este contenedor
-//Recibe como parámetro 'dispatch'
-const mapDispatchToProps = dispatch => {
-    return {
-        onSaveRateData: (propertyName, propertyValue) => dispatch(wizardActions.saveRateData(propertyName, propertyValue))
-    };
-};
-
-//connect da acceso al componente a la parte del estado definida en mapStateToProps
-export default connect(
-    null,
-    mapDispatchToProps
-)(WelcomePage);

@@ -10,8 +10,9 @@ import { steps } from '../constants/steps_wizard';
 export class StateMachine {
     constructor() {
         this.transitions = {
-            [steps.WELCOME]: [steps.VEHICLE_CHOOSE],
-            [steps.VEHICLE_CHOOSE]: [steps.BOAT, steps.CAR],
+            [steps.WELCOME]: [steps.YEAR_CHOOSE],
+            [steps.YEAR_CHOOSE]: [steps.CATEGORY_CHOOSE],
+            [steps.CATEGORY_CHOOSE]: [steps.WELCOME],
             [steps.BOAT]: [steps.BOAT_DETAIL],
             [steps.BOAT_DETAIL]: [steps.CONFIRM],
             [steps.CAR]: [steps.CONFIRM],

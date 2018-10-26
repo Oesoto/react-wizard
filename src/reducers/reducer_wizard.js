@@ -8,11 +8,14 @@ import { StateMachine } from '../utilities/StateMachine';
 
 //Se define un estado inicial para el reducer
 const initialState = {
-    currentStep: steps.WELCOME, //El wizard comienza en el estado WELCOME
+    //El wizard comienza en el estado WELCOME
+    // currentStep: steps.WELCOME,
+    currentStep: steps.WELCOME,
     //En este objeto se guardaran todos los datos almacenados en el wizard
     collectedData: {
         selectedEntity: '',
-        rateForYear: ''
+        yearForRate: '',
+        categoryForRate: ''
     }
 };
 

@@ -10,13 +10,11 @@ import { steps } from '../constants/steps_wizard';
 export class StateMachine {
     constructor() {
         this.transitions = {
-            [steps.WELCOME]: [steps.YEAR_CHOOSE],
+            //Transiciones permitidas para tarifario
+            [steps.WELCOME_RATE]: [steps.YEAR_CHOOSE],
             [steps.YEAR_CHOOSE]: [steps.CATEGORY_CHOOSE],
-            [steps.CATEGORY_CHOOSE]: [steps.WELCOME],
-            [steps.BOAT]: [steps.BOAT_DETAIL],
-            [steps.BOAT_DETAIL]: [steps.CONFIRM],
-            [steps.CAR]: [steps.CONFIRM],
-            [steps.CONFIRM]: [steps.VEHICLE_CHOOSE, steps.FINISH] // FYI the FINISH state is not used
+            [steps.CATEGORY_CHOOSE]: [steps.SUBCATEGORY_CHOOSE],
+            [steps.SUBCATEGORY_CHOOSE]: [steps.RATE_DISPLAY]
         };
     }
 

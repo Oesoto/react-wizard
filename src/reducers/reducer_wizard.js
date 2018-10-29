@@ -9,12 +9,13 @@ import { StateMachine } from '../utilities/StateMachine';
 //Se define un estado inicial para el reducer
 const initialState = {
     //El wizard comienza en el estado WELCOME
-    // currentStep: steps.WELCOME,
-    currentStep: steps.WELCOME,
+    // currentStep: steps.WELCOME_RATE,
+    currentStep: steps.WELCOME_RATE,
     //En este objeto se guardaran todos los datos almacenados en el wizard
     collectedData: {
         selectedEntity: '',
         yearForRate: '',
+        idCategoryForRate: '',
         categoryForRate: ''
     }
 };
@@ -43,27 +44,27 @@ export const wizardReducer = (state = initialState, action) => {
             };
         //Guardar la entidad seleccionada en el objeto collectedData
         case actionTypes.SAVE_RATE_DATA:
-            return {
-                //Propagación de estado y de collected data para no perder
-                //los datos ya almacenados y agregar lo nuevo que ingresó
-                ...state,
-                collectedData: {
-                    ...state.collectedData,
-                    [action.payload.propertyName]: action.payload.propertyValue
-                }
-            };
+            // return {
+            //     //Propagación de estado y de collected data para no perder
+            //     //los datos ya almacenados y agregar lo nuevo que ingresó
+            //     ...state,
+            //     collectedData: {
+            //         ...state.collectedData,
+            //         [action.payload.propertyName]: action.payload.propertyValue
+            //     }
+            // };
 
-        //Guardar el año seleccionado en el objeto collectedData
-        // case actionTypes.SAVE_RATE_YEAR:
-        //     return {
-        //         //Propagación de estado y de collected data para no perder
-        //         //los datos ya almacenados y agregar lo nuevo que ingresó
-        //         ...state,
-        //         collectedData: {
-        //             ...state.collectedData,
-        //             selectedEntity: action.entityName
-        //         }
-        //     };
+            console.log(action.payload);
+
+            action.payload.map(property => {
+                state.collectedData = {
+                    ...state.collectedData,
+                    [Object.entries(property)[0][0]]: Object.entries(property)[0][1]
+                };
+            });
+
+            return { ...state };
+
         default:
             return state;
     }

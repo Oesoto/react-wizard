@@ -23,7 +23,7 @@ export default class YearChoosePage extends Component {
     Guardará los datos y despachará la acción para ir
     al siguiente paso */
     dispatchSaveAction = () => {
-        this.props.onSaveRateData('yearForRate', this.state.currentYear);
+        this.props.onSaveRateData([{ yearForRate: this.state.currentYear }]);
         this.props.next(steps.CATEGORY_CHOOSE);
     };
 
@@ -55,7 +55,7 @@ export default class YearChoosePage extends Component {
                     <button type="button" name="2017" value="2017" onClick={this.registerYear}>
                         2017
                     </button>
-                    <button type="button" onClick={() => this.props.back(steps.WELCOME)}>
+                    <button type="button" onClick={() => this.props.back(steps.WELCOME_RATE)}>
                         Atrás
                     </button>
                     <button type="button" disabled={this.state.noOptionSelected} onClick={this.dispatchSaveAction}>

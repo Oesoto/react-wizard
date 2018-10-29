@@ -14,7 +14,7 @@ class Wizard extends Component {
     constructor(props) {
         super(props);
         // this.state = {
-        //     currentState: steps.WELCOME
+        //     currentState: steps.WELCOME_RATE
         // };
         // this._next = this._next.bind(this);
         // this._back = this._back.bind(this);
@@ -56,7 +56,7 @@ class Wizard extends Component {
    */
     // _currentStep() {
     //     switch (this.props.currentStep) {
-    //         case steps.WELCOME:
+    //         case steps.WELCOME_RATE:
     //             return <Welcome next={this.props.onGoNextStep} />;
     //         case steps.VEHICLE_CHOOSE:
     //             return <VehicleChoose back={this.props.onGoPrevStep} next={this.props.onGoNextStep} />;

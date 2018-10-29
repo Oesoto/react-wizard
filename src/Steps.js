@@ -36,7 +36,7 @@ import { steps } from './constants/steps_wizard.js';
 //     }
 
 //     _back() {
-//         this.props.back(steps.WELCOME);
+//         this.props.back(steps.WELCOME_RATE);
 //     }
 
 //     render() {

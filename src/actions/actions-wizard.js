@@ -19,12 +19,19 @@ export const goPrevStep = desiredPrevStep => {
 };
 
 //Action creator para guardar nombre de la entidad
-export const saveRateData = (propertyName, propertyValue) => {
+export const saveRateData = propertiesArray => {
     return {
         type: actionTypes.SAVE_RATE_DATA,
-        payload: { propertyName, propertyValue }
+        payload: propertiesArray
     };
 };
+
+// export const saveRateData = (propertyName, propertyValue) => {
+//     return {
+//         type: actionTypes.SAVE_RATE_DATA,
+//         payload: { propertyName, propertyValue }
+//     };
+// };
 
 //Action creator para guardar el año de tarifario seleccionado
 // export const saveYearForRate = yearForRate => {

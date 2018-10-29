@@ -25,12 +25,13 @@ export default class WelcomePage extends Component {
     Guardará los datos y despachará la acción para ir
     al siguiente paso */
     dispatchSaveAction = () => {
-        this.props.onSaveRateData('selectedEntity', this.state.currentEntity);
+        // this.props.onSaveRateData('selectedEntity', this.state.currentEntity);
+        this.props.onSaveRateData([{ selectedEntity: this.state.currentEntity }]);
         this.props.next(steps.YEAR_CHOOSE);
     };
 
     render() {
-        if (this.props.currentStep == steps.WELCOME) {
+        if (this.props.currentStep == steps.WELCOME_RATE) {
             return (
                 <div>
                     <p>Selecciona la entidad sobre que quieres conocer las tarifas</p>

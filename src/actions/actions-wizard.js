@@ -19,24 +19,23 @@ export const goPrevStep = desiredPrevStep => {
 };
 
 //Action creator para guardar nombre de la entidad
-export const saveRateData = propertiesArray => {
+export const saveRateData = properties => {
     return {
         type: actionTypes.SAVE_RATE_DATA,
-        payload: propertiesArray
+        payload: properties
     };
 };
 
-// export const saveRateData = (propertyName, propertyValue) => {
+// export const saveRateData = propertiesArray => {
 //     return {
 //         type: actionTypes.SAVE_RATE_DATA,
-//         payload: { propertyName, propertyValue }
+//         payload: propertiesArray
 //     };
 // };
 
-//Action creator para guardar el año de tarifario seleccionado
-// export const saveYearForRate = yearForRate => {
-//     return {
-//         type: actionTypes.SAVE_RATE_YEAR,
-//         yearForRate
-//     };
-// };
+//Action creator para hacer reset de los datos del wizard de tarifario
+export const resetRateData = () => {
+    return {
+        type: actionTypes.RESET_RATE_DATA
+    };
+};

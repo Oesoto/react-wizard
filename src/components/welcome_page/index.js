@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { steps } from '../../constants/steps_wizard';
 
 import * as wizardActions from '../../actions/actions-wizard';
 
+const initialState = {
+    noOptionSelected: true,
+    currentEntity: ''
+};
+
 export default class WelcomePage extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            noOptionSelected: true,
-            currentEntity: ''
-        };
+        // this.state = {
+        //     noOptionSelected: true,
+        //     currentEntity: ''
+        // };
+        this.state = initialState;
+        this.registerEntity = this.registerEntity.bind(this);
+        this.dispatchSaveAction = this.dispatchSaveAction.bind(this);
     }
 
     //Handler para los botones de selección de entidad
@@ -27,8 +34,17 @@ export default class WelcomePage extends Component {
     dispatchSaveAction = () => {
         // this.props.onSaveRateData('selectedEntity', this.state.currentEntity);
         this.props.onSaveRateData([{ selectedEntity: this.state.currentEntity }]);
+        // this.props.onSaveRateData({ selectedEntity: this.state.currentEntity, yearForRate: 2018 });
         this.props.next(steps.YEAR_CHOOSE);
     };
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.reset) {
+            console.log('Hacer reset');
+            return initialState;
+        } else {
+        }
+    }
 
     render() {
         if (this.props.currentStep == steps.WELCOME_RATE) {

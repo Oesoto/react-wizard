@@ -9,6 +9,8 @@ export default class YearChoosePage extends Component {
             noOptionSelected: true,
             currentYear: ''
         };
+        this.registerYear = this.registerYear.bind(this);
+        this.dispatchSaveAction = this.dispatchSaveAction.bind(this);
     }
 
     //Handler para los botones de selección de año

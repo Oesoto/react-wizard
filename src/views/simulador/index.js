@@ -6,8 +6,6 @@ import store from '../../store';
 // COMPONENTS
 // import Header from '../../components/header';
 import Wizard from '../../components/wizard';
-import { WelcomePage } from '../../components/welcome_page';
-// import Form from '../../components/form';
 
 // STYLES
 const styles = {

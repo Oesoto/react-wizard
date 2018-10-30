@@ -4,6 +4,6 @@ export const actionTypes = {
     GO_NEXTSTEP: 'GO_NEXTSTEP',
     GO_PREVSTEP: 'GO_PREVSTEP',
     //Acciones para recolección de datos de Wizard tarifario
-    SAVE_RATE_DATA: 'SAVE_RATE_DATA'
-    // SAVE_RATE_YEAR: 'SAVE_RATE_YEAR'
+    SAVE_RATE_DATA: 'SAVE_RATE_DATA',
+    RESET_RATE_DATA: 'RESET_RATE_DATA'
 };

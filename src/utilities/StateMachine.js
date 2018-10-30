@@ -14,7 +14,8 @@ export class StateMachine {
             [steps.WELCOME_RATE]: [steps.YEAR_CHOOSE],
             [steps.YEAR_CHOOSE]: [steps.CATEGORY_CHOOSE],
             [steps.CATEGORY_CHOOSE]: [steps.SUBCATEGORY_CHOOSE],
-            [steps.SUBCATEGORY_CHOOSE]: [steps.RATE_DISPLAY]
+            [steps.SUBCATEGORY_CHOOSE]: [steps.RATE_DISPLAY],
+            [steps.RATE_DISPLAY]: [steps.WELCOME_RATE]
         };
     }
 

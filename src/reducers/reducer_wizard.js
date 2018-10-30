@@ -11,13 +11,9 @@ const initialState = {
     //El wizard comienza en el estado WELCOME
     // currentStep: steps.WELCOME_RATE,
     currentStep: steps.WELCOME_RATE,
+    initWithInitialState: true,
     //En este objeto se guardaran todos los datos almacenados en el wizard
-    collectedData: {
-        selectedEntity: '',
-        yearForRate: '',
-        idCategoryForRate: '',
-        categoryForRate: ''
-    }
+    collectedData: {}
 };
 
 export const wizardReducer = (state = initialState, action) => {
@@ -53,17 +49,19 @@ export const wizardReducer = (state = initialState, action) => {
             //         [action.payload.propertyName]: action.payload.propertyValue
             //     }
             // };
-
-            console.log(action.payload);
+            let newState = { ...state, initWithInitialState: false };
 
             action.payload.map(property => {
-                state.collectedData = {
-                    ...state.collectedData,
+                newState.collectedData = {
+                    ...newState.collectedData,
                     [Object.entries(property)[0][0]]: Object.entries(property)[0][1]
                 };
             });
 
-            return { ...state };
+            return { ...newState };
+
+        case actionTypes.RESET_RATE_DATA:
+            return initialState;
 
         default:
             return state;

@@ -7,26 +7,26 @@ class CategoryChoosePage extends Component {
         super(props);
         this.state = {
             noOptionSelected: true,
-            idCurrentCategory: 2,
+            idCurrentCategory: null,
             currentCategory: '',
             categories: []
         };
         this.registerCategory = this.registerCategory.bind(this);
+        this.dispatchSaveAction = this.dispatchSaveAction.bind(this);
     }
 
     componentDidMount(prevProps, prevState) {
         //TODO: Webservice consultar categorías
         let categories = [
             { id: 1, category_name: 'Canales' },
-            { id: 2, category_name: 'Canales' },
-            { id: 3, category_name: 'Captaciones y giros' },
-            { id: 4, category_name: 'Cartera' },
-            { id: 5, category_name: 'Leasing' },
-            { id: 6, category_name: 'Tarjeta débido, crédito y cajeros' },
-            { id: 7, category_name: 'Moneda extrajera' },
-            { id: 8, category_name: 'Seguros' },
-            { id: 9, category_name: 'Servicios transaccionales' },
-            { id: 10, category_name: 'Solución inmobiliaria' }
+            { id: 2, category_name: 'Captaciones y giros' },
+            { id: 3, category_name: 'Cartera' },
+            { id: 4, category_name: 'Leasing' },
+            { id: 5, category_name: 'Tarjeta débido, crédito y cajeros' },
+            { id: 6, category_name: 'Moneda extrajera' },
+            { id: 7, category_name: 'Seguros' },
+            { id: 8, category_name: 'Servicios transaccionales' },
+            { id: 9, category_name: 'Solución inmobiliaria' }
         ];
         this.setState({ categories: categories });
     }
@@ -55,7 +55,7 @@ class CategoryChoosePage extends Component {
                     <div>
                         {this.state.categories.map((category, index) => (
                             <button
-                                key={category.id}
+                                key={index}
                                 type="button"
                                 name={`button${category.id}`}
                                 value={category.category_name}
@@ -66,7 +66,7 @@ class CategoryChoosePage extends Component {
                         ))}
                     </div>
                     <br />
-                    <button type="button" onClick={() => this.props.back(steps.WELCOME_RATE)}>
+                    <button type="button" onClick={() => this.props.back(steps.YEAR_CHOOSE)}>
                         Atrás
                     </button>
                     <button type="button" disabled={this.state.noOptionSelected} onClick={this.dispatchSaveAction}>

@@ -26,13 +26,6 @@ export const saveRateData = properties => {
     };
 };
 
-// export const saveRateData = propertiesArray => {
-//     return {
-//         type: actionTypes.SAVE_RATE_DATA,
-//         payload: propertiesArray
-//     };
-// };
-
 //Action creator para hacer reset de los datos del wizard de tarifario
 export const resetRateData = () => {
     return {

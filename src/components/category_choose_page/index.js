@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { steps } from '../../constants/steps_wizard';
 
+const initialState = {
+    noOptionSelected: true,
+    idCurrentCategory: null,
+    currentCategory: '',
+    categories: [],
+    isUntouched: true
+};
+
 //--Paso 3 - Seleccionar categoría
 class CategoryChoosePage extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            noOptionSelected: true,
-            idCurrentCategory: null,
-            currentCategory: '',
-            categories: []
-        };
+        this.state = initialState;
         this.registerCategory = this.registerCategory.bind(this);
         this.dispatchSaveAction = this.dispatchSaveAction.bind(this);
     }
@@ -35,7 +38,8 @@ class CategoryChoosePage extends Component {
         this.setState({
             idCurrentCategory: categoryId,
             currentCategory: e.target.value,
-            noOptionSelected: false
+            noOptionSelected: false,
+            isUntouched: false
         });
     };
 
@@ -46,6 +50,22 @@ class CategoryChoosePage extends Component {
         this.props.onSaveRateData([{ categoryForRate: this.state.currentCategory }, { idCategoryForRate: this.state.idCurrentCategory }]);
         this.props.next(steps.SUBCATEGORY_CHOOSE);
     };
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        //Recibe los siguientes props y el estado previo
+        //Si el componente está marcado como modificado y se debe hacer reset entonces
+        //asignar el estado inicial al estado para hacer reset del componente
+        if (!prevState.isUntouched && nextProps.reset) {
+            return {
+                noOptionSelected: true,
+                idCurrentCategory: null,
+                currentCategory: '',
+                isUntouched: true
+            };
+        } else {
+            return {};
+        }
+    }
 
     render() {
         if (this.props.currentStep == steps.CATEGORY_CHOOSE) {

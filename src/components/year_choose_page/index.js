@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { steps } from '../../constants/steps_wizard';
 
+const initialState = {
+    noOptionSelected: true,
+    currentYear: '',
+    isUntouched: true
+};
+
 //--Paso 2 - Seleccionar año de tarifario
 export default class YearChoosePage extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            noOptionSelected: true,
-            currentYear: ''
-        };
+        this.state = initialState;
         this.registerYear = this.registerYear.bind(this);
         this.dispatchSaveAction = this.dispatchSaveAction.bind(this);
     }
@@ -17,7 +20,8 @@ export default class YearChoosePage extends Component {
     registerYear = e => {
         this.setState({
             currentYear: e.target.value,
-            noOptionSelected: false
+            noOptionSelected: false,
+            isUntouched: false
         });
     };
 
@@ -28,6 +32,17 @@ export default class YearChoosePage extends Component {
         this.props.onSaveRateData([{ yearForRate: this.state.currentYear }]);
         this.props.next(steps.CATEGORY_CHOOSE);
     };
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        //Recibe los siguientes props y el estado previo
+        //Si el componente está marcado como modificado y se debe hacer reset entonces
+        //asignar el estado inicial al estado para hacer reset del componente
+        if (!prevState.isUntouched && nextProps.reset) {
+            return initialState;
+        } else {
+            return {};
+        }
+    }
 
     // _validate(e) {
     //     e.preventDefault();

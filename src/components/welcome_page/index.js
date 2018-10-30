@@ -5,16 +5,13 @@ import * as wizardActions from '../../actions/actions-wizard';
 
 const initialState = {
     noOptionSelected: true,
-    currentEntity: ''
+    currentEntity: '',
+    isUntouched: true
 };
 
 export default class WelcomePage extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     noOptionSelected: true,
-        //     currentEntity: ''
-        // };
         this.state = initialState;
         this.registerEntity = this.registerEntity.bind(this);
         this.dispatchSaveAction = this.dispatchSaveAction.bind(this);
@@ -24,8 +21,11 @@ export default class WelcomePage extends Component {
     registerEntity = e => {
         this.setState({
             currentEntity: e.target.value,
-            noOptionSelected: false
+            noOptionSelected: false,
+            isUntouched: false
         });
+        //Llamar acción en el reducer para desactivar el flag de reset
+        // this.props.onOptionSelected();
     };
 
     /*Handler del botón continuar
@@ -37,14 +37,6 @@ export default class WelcomePage extends Component {
         // this.props.onSaveRateData({ selectedEntity: this.state.currentEntity, yearForRate: 2018 });
         this.props.next(steps.YEAR_CHOOSE);
     };
-
-    static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.reset) {
-            console.log('Hacer reset');
-            return initialState;
-        } else {
-        }
-    }
 
     render() {
         if (this.props.currentStep == steps.WELCOME_RATE) {

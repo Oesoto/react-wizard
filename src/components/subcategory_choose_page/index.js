@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { steps } from '../../constants/steps_wizard';
 
+const initialState = {
+    noOptionSelected: true,
+    idCurrentSubcategory: null,
+    currentSubcategory: '',
+    subcategories: [],
+    isUntouched: true
+};
+
 //--Paso 4: Seleccionar sucategoria tarifario
 class SubcategoryChoosePage extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            noOptionSelected: true,
-            idCurrentSubcategory: null,
-            currentSubcategory: '',
-            subcategories: []
-        };
+        this.state = initialState;
 
         this.registerSubcategory = this.registerSubcategory.bind(this);
         this.dispatchSaveAction = this.dispatchSaveAction.bind(this);
@@ -37,7 +40,8 @@ class SubcategoryChoosePage extends Component {
         this.setState({
             idCurrentSubcategory: subCategoryId,
             currentSubcategory: subCategoryName,
-            noOptionSelected: false
+            noOptionSelected: false,
+            isUntouched: false
         });
     };
 
@@ -45,9 +49,13 @@ class SubcategoryChoosePage extends Component {
     Guardará los datos y despachará la acción para ir
     al siguiente paso */
     dispatchSaveAction = e => {
+        console.log(e);
+
         e.preventDefault();
-        this.props.onSaveRateData([{ subcategoryForRate: this.state.currentSubcategory }, { idSubcategoryForRate: this.state.idCurrentSubcategory }]);
-        this.props.next(steps.RATE_DISPLAY);
+        if (!this.state.isUntouched) {
+            this.props.onSaveRateData([{ subcategoryForRate: this.state.currentSubcategory }, { idSubcategoryForRate: this.state.idCurrentSubcategory }]);
+            this.props.next(steps.RATE_DISPLAY);
+        }
     };
 
     render() {
@@ -96,7 +104,7 @@ class SubcategoryChoosePage extends Component {
                             </a>
                         </div>
                         <div className="col-md-2">
-                            <a className="button button-yellow" disabled={this.state.noOptionSelected} href="#" onClick={this.dispatchSaveAction}>
+                            <a className="button button-yellow" disabled={this.state.isUntouched} href="#" onClick={this.dispatchSaveAction}>
                                 CONTINUAR
                             </a>
                         </div>

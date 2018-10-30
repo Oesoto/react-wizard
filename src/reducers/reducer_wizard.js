@@ -7,11 +7,11 @@ import { StateMachine } from '../utilities/StateMachine';
 //Toma como parametros un estado y una acción
 
 //Se define un estado inicial para el reducer
-const initialState = {
+let initialState = {
     //El wizard comienza en el estado WELCOME
     // currentStep: steps.WELCOME_RATE,
     currentStep: steps.WELCOME_RATE,
-    initWithInitialState: true,
+    key: Math.floor(Math.random() * 9999),
     //En este objeto se guardaran todos los datos almacenados en el wizard
     collectedData: {}
 };
@@ -49,7 +49,7 @@ export const wizardReducer = (state = initialState, action) => {
             //         [action.payload.propertyName]: action.payload.propertyValue
             //     }
             // };
-            let newState = { ...state, initWithInitialState: false };
+            let newState = { ...state };
 
             action.payload.map(property => {
                 newState.collectedData = {
@@ -61,6 +61,7 @@ export const wizardReducer = (state = initialState, action) => {
             return { ...newState };
 
         case actionTypes.RESET_RATE_DATA:
+            initialState.key = Math.floor(Math.random() * 9999);
             return initialState;
 
         default:

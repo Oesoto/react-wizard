@@ -24,37 +24,42 @@ class Wizard extends Component {
                 {/* {Welcome - Componente} */}
                 <WelcomePage
                     currentStep={this.props.currentStep}
-                    reset={this.props.initWithInitialState}
+                    // reset={this.props.initWithInitialState}
                     next={this.props.onGoNextStep}
+                    // onOptionSelected={this.props.onOptionSelected}
                     onSaveRateData={this.props.onSaveRateData}
+                    key={this.props.currentKey}
                 />
                 {/* Elegir año - Componente */}
                 <YearChoosePage
                     currentStep={this.props.currentStep}
-                    reset={this.props.initWithInitialState}
+                    // reset={this.props.initWithInitialState}
                     back={this.props.onGoPrevStep}
                     next={this.props.onGoNextStep}
                     onSaveRateData={this.props.onSaveRateData}
+                    key={this.props.currentKey + 1}
                 />
                 {/* Elegir categoría - Componente */}
                 <CategoryChoosePage
                     currentStep={this.props.currentStep}
-                    reset={this.props.initWithInitialState}
+                    // reset={this.props.initWithInitialState}
                     back={this.props.onGoPrevStep}
                     next={this.props.onGoNextStep}
                     onSaveRateData={this.props.onSaveRateData}
+                    key={this.props.currentKey + 2}
                 />
                 {/* Elegir subcategoría - Componente */}
                 <SubcategoryChoosePage
                     currentStep={this.props.currentStep}
-                    reset={this.props.initWithInitialState}
+                    // reset={this.props.initWithInitialState}
                     categoryId={''}
                     back={this.props.onGoPrevStep}
                     next={this.props.onGoNextStep}
                     onSaveRateData={this.props.onSaveRateData}
+                    key={this.props.currentKey + 3}
                 />
                 {/* Mostrar tarifas - Componente */}
-                <RateDisplay currentStep={this.props.currentStep} reset={this.props.initWithInitialState} reset={this.props.onResetRateData} />
+                <RateDisplay currentStep={this.props.currentStep} key={this.props.currentKey + 4} reset={this.props.onResetRateData} />
             </div>
         );
     }
@@ -66,7 +71,8 @@ class Wizard extends Component {
 const mapStateToProps = state => {
     return {
         currentStep: state.wizard.currentStep,
-        initWithInitialState: state.wizard.initWithInitialState
+        // initWithInitialState: state.wizard.initWithInitialState,
+        currentKey: state.wizard.key
     };
 };
 

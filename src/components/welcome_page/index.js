@@ -24,17 +24,13 @@ export default class WelcomePage extends Component {
             noOptionSelected: false,
             isUntouched: false
         });
-        //Llamar acción en el reducer para desactivar el flag de reset
-        // this.props.onOptionSelected();
     };
 
     /*Handler del botón continuar
     Guardará los datos y despachará la acción para ir
     al siguiente paso */
     dispatchSaveAction = () => {
-        // this.props.onSaveRateData('selectedEntity', this.state.currentEntity);
         this.props.onSaveRateData([{ selectedEntity: this.state.currentEntity }]);
-        // this.props.onSaveRateData({ selectedEntity: this.state.currentEntity, yearForRate: 2018 });
         this.props.next(steps.YEAR_CHOOSE);
     };
 
@@ -47,10 +43,10 @@ export default class WelcomePage extends Component {
                         Entidad
                     </button>
                     <button type="button" name="fiduciaria" value="Fiduciaria" onClick={this.registerEntity}>
-                        Fiduciaria
+                        Entidad 1
                     </button>
                     <button type="button" name="valores" value="Valores" onClick={this.registerEntity}>
-                        Valores
+                        Entidad 2
                     </button>
 
                     <button disabled={this.state.noOptionSelected} type="button" onClick={this.dispatchSaveAction}>

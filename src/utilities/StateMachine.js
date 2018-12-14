@@ -2,7 +2,7 @@ import { steps } from '../constants/steps_wizard';
 
 /*
  * This class simply helps us coordinate the transitions
- * between states. We've hardcoded the state "tree" in 
+ * between states. We've hardcoded the state "tree" in
  * the constructor. This class makes sure that any
  * transition between states requested by the app
  * are valid.
@@ -10,7 +10,7 @@ import { steps } from '../constants/steps_wizard';
 export class StateMachine {
     constructor() {
         this.transitions = {
-            //Transiciones permitidas para tarifario
+            //Transiciones permitidas para tarifas
             [steps.WELCOME_RATE]: [steps.YEAR_CHOOSE],
             [steps.YEAR_CHOOSE]: [steps.CATEGORY_CHOOSE],
             [steps.CATEGORY_CHOOSE]: [steps.SUBCATEGORY_CHOOSE],

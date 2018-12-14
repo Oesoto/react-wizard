@@ -9,7 +9,7 @@ const initialState = {
     isUntouched: true
 };
 
-//--Paso 4: Seleccionar sucategoria tarifario
+//--Paso 4: Seleccionar subcategoria tarifas
 class SubcategoryChoosePage extends Component {
     constructor(props) {
         super(props);
@@ -22,15 +22,15 @@ class SubcategoryChoosePage extends Component {
     componentDidMount(prevProps, prevState) {
         //TODO: Webservice consultar subcategorias
         let subcategories = [
-            { id: 1, subcategory_name: 'Bancolombia app' },
-            { id: 2, subcategory_name: 'Billetera movil' },
-            { id: 3, subcategory_name: 'Cajero automático' },
-            { id: 4, subcategory_name: 'Conexión empresarial bancolombia' },
-            { id: 5, subcategory_name: 'Corresponsal bancario' },
-            { id: 6, subcategory_name: 'Subcategoria 1' },
-            { id: 7, subcategory_name: 'Subcategoria 2' },
-            { id: 8, subcategory_name: 'Subcategoria 3' },
-            { id: 9, subcategory_name: 'Subcategoria 4' }
+            { id: 1, subcategory_name: 'Subcategoria 1' },
+            { id: 2, subcategory_name: 'Subcategoria 2' },
+            { id: 3, subcategory_name: 'Subcategoria 3' },
+            { id: 4, subcategory_name: 'Subcategoria 4' },
+            { id: 5, subcategory_name: 'Subcategoria 5' },
+            { id: 6, subcategory_name: 'Subcategoria 6' },
+            { id: 7, subcategory_name: 'Subcategoria 7' },
+            { id: 8, subcategory_name: 'Subcategoria 8' },
+            { id: 9, subcategory_name: 'Subcategoria 9' }
         ];
         this.setState({ subcategories });
     }
@@ -49,14 +49,17 @@ class SubcategoryChoosePage extends Component {
     Guardará los datos y despachará la acción para ir
     al siguiente paso */
     dispatchSaveAction = e => {
-        console.log(e);
-
         e.preventDefault();
         if (!this.state.isUntouched) {
             this.props.onSaveRateData([{ subcategoryForRate: this.state.currentSubcategory }, { idSubcategoryForRate: this.state.idCurrentSubcategory }]);
             this.props.next(steps.RATE_DISPLAY);
         }
     };
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log(' SubcategoryChoosePage -> componentDidUpdate -> prevProps', prevProps);
+    //     console.log(' SubcategoryChoosePage -> componentDidUpdate -> curreProps', this.props);
+    // }
 
     render() {
         if (this.props.currentStep == steps.SUBCATEGORY_CHOOSE) {

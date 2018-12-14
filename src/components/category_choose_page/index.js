@@ -21,15 +21,15 @@ class CategoryChoosePage extends Component {
     componentDidMount(prevProps, prevState) {
         //TODO: Webservice consultar categorías
         let categories = [
-            { id: 1, category_name: 'Canales' },
-            { id: 2, category_name: 'Captaciones y giros' },
-            { id: 3, category_name: 'Cartera' },
-            { id: 4, category_name: 'Leasing' },
-            { id: 5, category_name: 'Tarjeta débido, crédito y cajeros' },
-            { id: 6, category_name: 'Moneda extrajera' },
-            { id: 7, category_name: 'Seguros' },
-            { id: 8, category_name: 'Servicios transaccionales' },
-            { id: 9, category_name: 'Solución inmobiliaria' }
+            { id: 1, category_name: 'Categoria 1' },
+            { id: 2, category_name: 'Categoria 2' },
+            { id: 3, category_name: 'Categoria 3' },
+            { id: 4, category_name: 'Categoria 4' },
+            { id: 5, category_name: 'Categoria 5' },
+            { id: 6, category_name: 'Categoria 6' },
+            { id: 7, category_name: 'Categoria 7' },
+            { id: 8, category_name: 'Categoria 8' },
+            { id: 9, category_name: 'Categoria 9' }
         ];
         this.setState({ categories: categories });
     }

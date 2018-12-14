@@ -14,10 +14,10 @@ class RateDisplay extends Component {
     componentDidMount() {
         //TODO: Webservice consultar tarifas
         let rates = [
-            { id: 1, description: 'Certificados y referencias Bancarias', rate: '5671' },
-            { id: 2, description: 'Comprobante de transacciones / Certificación de las transacciones Viva Voz / Copias de cheques ias', rate: '5671' },
-            { id: 3, description: 'Consulta de movimientos / Copia extracto (Por periodo)', rate: '6000' },
-            { id: 4, description: 'Consulta de salgo (Cuenta corriente, cuenta de ahorros)', rate: '3850' }
+            { id: 1, description: 'Tarifa 1', rate: '1000' },
+            { id: 2, description: 'Tarifa 2', rate: '2000' },
+            { id: 3, description: 'Tarifa 3', rate: '3000' },
+            { id: 4, description: 'Tarifa 4', rate: '4000' }
         ];
         this.setState({ rates });
     }
@@ -50,33 +50,31 @@ class RateDisplay extends Component {
                                                 <tbody>
                                                     <tr>
                                                         <th>Descripción</th>
-                                                        <th>Tarifa (Sin IVA)</th>
+                                                        <th>Tarifa</th>
                                                     </tr>
                                                     <tr>
-                                                        <td>Certificados y referencias Bancarias</td>
-                                                        <td>$5.671</td>
+                                                        <td>Tarifa 1</td>
+                                                        <td>$1.000</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            Comprobante de transacciones / Certificación de las transacciones Viva Voz / Copias de cheques ias
-                                                        </td>
-                                                        <td>$5.671</td>
+                                                        <td>Tarifa 2</td>
+                                                        <td>$2.000</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Consulta de movimientos / Copia extracto (Por periodo)</td>
-                                                        <td>$6.000</td>
+                                                        <td>Tarifa 3</td>
+                                                        <td>$3.000</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Consulta de saldo (Cuenta corriente, cuenta ahorros)</td>
-                                                        <td>$3.850</td>
+                                                        <td>Tarifa 4</td>
+                                                        <td>$4.000</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                         <div className="col-md-9 text-center">
                                             <p className="legal-5">
-                                                * Las tarifas publicadas no incluyen el IVA. El impuesto se liquidará en cada facturación de acuerdo con lo
-                                                establecido en ley.{' '}
+                                                Ipsum nulla amet Lorem quis est esse dolor dolore ipsum nulla esse officia velit voluptate. Labore deserunt nisi
+                                                aliquip dolore ullamco enim qui minim non occaecat laborum cupidatat culpa ex. Id ut dolor aliquip fugiat
                                             </p>
                                         </div>
                                     </div>

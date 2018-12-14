@@ -71,7 +71,6 @@ class Wizard extends Component {
 const mapStateToProps = state => {
     return {
         currentStep: state.wizard.currentStep,
-        // initWithInitialState: state.wizard.initWithInitialState,
         currentKey: state.wizard.key
     };
 };
@@ -87,7 +86,7 @@ const mapDispatchToProps = dispatch => {
         onGoPrevStep: desiredPrevStep => dispatch(wizardActions.goPrevStep(desiredPrevStep)),
         //Acción guardar datos de la tarifa
         onSaveRateData: (propertyName, propertyValue) => dispatch(wizardActions.saveRateData(propertyName, propertyValue)),
-        //Acción borrar los datos almacenados del tarifario
+        //Acción borrar los datos almacenados de tarifas
         onResetRateData: () => dispatch(wizardActions.resetRateData())
     };
 };

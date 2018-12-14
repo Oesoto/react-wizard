@@ -7,7 +7,7 @@ const initialState = {
     isUntouched: true
 };
 
-//--Paso 2 - Seleccionar año de tarifario
+//--Paso 2 - Seleccionar año de tarifas
 export default class YearChoosePage extends Component {
     constructor(props) {
         super(props);
@@ -43,20 +43,6 @@ export default class YearChoosePage extends Component {
             return {};
         }
     }
-
-    // _validate(e) {
-    //     e.preventDefault();
-    //     let value = this.state.value;
-    //     if (value === 'car') {
-    //         this.props.next(steps.CAR);
-    //     } else if (value === 'boat') {
-    //         this.props.next(steps.BOAT);
-    //     } else {
-    //         this.setState({
-    //             errors: ['Please choose a vehicle type']
-    //         });
-    //     }
-    // }
 
     render() {
         if (this.props.currentStep == steps.YEAR_CHOOSE) {
